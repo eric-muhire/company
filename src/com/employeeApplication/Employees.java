@@ -27,17 +27,17 @@ public class Employees {
     public void addEmployee() throws SQLException {
         try{
         Scanner input = new Scanner(System.in);
-        System.out.print("Enter employees name:");
+        S.o("Enter employees name:");
         employees_name=input.nextLine();
-        System.out.print("Enter employees start date:");
+        S.o("Enter employees start date:");
         employment_date = Date.valueOf(input.nextLine());
-        System.out.print("Enter employees education:");
+        S.o("Enter employees education:");
         employees_education = input.nextLine();
-        System.out.print("Enter employees salary:");
+        S.o("Enter employees salary:");
         employees_salary = Double.valueOf(input.nextLine());
-        System.out.print("Enter employees gender:");
+        S.o("Enter employees gender:");
         employees_gender = input.nextLine();
-        System.out.print("Enter employees birth date:");
+        S.o("Enter employees birth date:");
         employees_dateOfBirth = Date.valueOf(input.nextLine());
 
         //Startar uppkoppling till Databas
@@ -73,12 +73,12 @@ public class Employees {
         try {
 
             Scanner input = new Scanner(System.in);
-            System.out.print("Enter employee Id to update information : ");
+            S.o("Enter employee Id to update information : ");
             employees_id = Integer.parseInt(input.nextLine());
 
             S.o("Enter employee`s education to be updated:");
             employees_education=input.nextLine();
-            System.out.print("Enter employee`s salary to be updated:");
+            S.o("Enter employee`s salary to be updated:");
             employees_salary=Double.parseDouble(input.nextLine());
 
             cn = DriverManager.getConnection(DBAddress, user, pass);
@@ -91,12 +91,12 @@ public class Employees {
             pstat.setDouble(3,employees_salary);
 
            pstat.executeUpdate();
-           System.out.println("\n----------Information updated successfully-------------\n");
+           S.o("\n----------Information updated successfully-------------\n");
            cn.close();
         }
         catch(InputMismatchException | SQLException e) {
-            System.out.println("SQLException: " + e.getMessage());
-            System.out.println("The values entered do not match");
+            S.o("SQLException: " + e.getMessage());
+            S.o("The values entered do not match");
         }
     }
     //Metoden för att ta bort en anställd.
@@ -104,7 +104,7 @@ public class Employees {
 
         try {
             Scanner input= new Scanner(System.in);
-            System.out.print("Enter employee Id to be deleted : ");
+            S.o("Enter employee Id to be deleted : ");
             employees_id=input.nextInt();
             cn = DriverManager.getConnection(DBAddress, user, pass);
             //pstat= cn.prepareStatement("DELETE FROM employees WHERE employees_id = ?");
@@ -113,7 +113,7 @@ public class Employees {
             pstat= cn.prepareStatement(" CALL deleteEmployee(?)");
             pstat.setInt(1,employees_id);
             pstat.executeUpdate();
-            System.out.println("\n-------------Information has been deleted-------------\n");
+            S.o("\n-------------Information has been deleted-------------\n");
             cn.close();
         }
         catch(SQLException  e){
@@ -133,31 +133,31 @@ public class Employees {
             resultSet = pstat.executeQuery();
 
             // Hämtar data från resultset
-            System.out.println("\n-------------SQL DATA-------------\n");
+            S.o("\n-------------SQL DATA-------------\n");
             while (resultSet.next()) {
 
                 //Hämta informationen genom column
-                System.out.println("Id: " + resultSet.getInt("employees_id"));
-                System.out.println("\t" + "Name: "+resultSet.getString("employees_name"));
-                System.out.println("\t" + "Employment date: " +resultSet.getDate("employment_date"));
-                System.out.println("\t" + "Education: " +resultSet.getString("employees_education"));
-                System.out.println("\t" + "Salary: "+resultSet.getInt("employees_salary")+" kr");
-                System.out.println("\t" + "Gender: " +resultSet.getString("employees_gender"));
-                System.out.println("\t" + "Date of birth: " +resultSet.getDate("employees_dateOfBirth"));
-                System.out.println("\t" + "Department: "+resultSet.getString("departments_name"));
-                System.out.println("\t" + "Assignment: "+resultSet.getString("assignments_name"));
-                System.out.println("\t" + "Position: "+resultSet.getString("positions_name"));
+                S.o("Id: " + resultSet.getInt("employees_id"));
+                S.o("\t" + "Name: "+resultSet.getString("employees_name"));
+                S.o("\t" + "Employment date: " +resultSet.getDate("employment_date"));
+                S.o("\t" + "Education: " +resultSet.getString("employees_education"));
+                S.o("\t" + "Salary: "+resultSet.getInt("employees_salary")+" kr");
+                S.o("\t" + "Gender: " +resultSet.getString("employees_gender"));
+                S.o("\t" + "Date of birth: " +resultSet.getDate("employees_dateOfBirth"));
+                S.o("\t" + "Department: "+resultSet.getString("departments_name"));
+                S.o("\t" + "Assignment: "+resultSet.getString("assignments_name"));
+                S.o("\t" + "Position: "+resultSet.getString("positions_name"));
 
             }
             //Stänga databasanslutningen.
             cn.close();
-            System.out.println("\n-------------Information has been retrieved-------------\n");
-            System.out.println("------------------END-----------------------------------");
+            S.o("\n-------------Information has been retrieved-------------\n");
+            S.o("------------------END-----------------------------------");
 
         } catch (SQLException e) {
             // Hanterar fel meddelanden
-            System.out.println("SQLException: " + e.getMessage());
-            System.out.println("SQLState: " + e.getSQLState());
+            S.o("SQLException: " + e.getMessage());
+            S.o("SQLState: " + e.getSQLState());
         }
     }
 }

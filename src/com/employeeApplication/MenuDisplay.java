@@ -15,16 +15,16 @@ public class MenuDisplay {
 
             S.o("\nWelcome to, " +muhireAb.getCompanyName()+"!\n" +muhireAb.getCity()
                     +"\n"+muhireAb.getAddress()+"\n"+muhireAb.getTelephoneNumber());
-            System.out.println("\n\n-------------Main Menu for MuhireAB-------------\n");
-            System.out.println("A. Add employee details");
-            System.out.println("B. Update employee details");
-            System.out.println("C. Delete employee details");
-            System.out.println("D. Display all employee details");
-            System.out.println("E. Exit");
+            S.o("\n\n-------------Main Menu for MuhireAB-------------\n");
+            S.o("A. Add employee details");
+            S.o("B. Update employee details");
+            S.o("C. Delete employee details");
+            S.o("D. Display all employee details");
+            S.o("E. Exit");
 
         do {
             // Ber användaren att välja alternativ
-            System.out.print("\n Enter your choice : ");
+            S.o("\n Enter your choice : ");
            char option1=ch.next().charAt(0);
            option=Character.toUpperCase(option1);
 
@@ -33,7 +33,7 @@ public class MenuDisplay {
 
                 //Case 'A' låter användaren lägga till ny anställd
                 case 'A':
-                    System.out.println("\n----------Adding employee details-------------\n");
+                    S.o("\n----------Adding employee details-------------\n");
                     try {
                         employees.addEmployee();
                     } catch (SQLException e) {
@@ -43,34 +43,34 @@ public class MenuDisplay {
 
                     //Case 'B' låter användare uppdatera en del information för anställda.
                 case 'B':
-                    System.out.println("\n----------Updating employee details-------------\n");
+                   S.o("\n----------Updating employee details-------------\n");
                     employees.updateEmployee();
                     break;
 
                     //Case 'C' låter användaren ta bort en anställd
                 case 'C':
-                    System.out.println("\n----------Deleting employee details-------------\n");
+                    S.o("\n----------Deleting employee details-------------\n");
                     employees.deleteEmployee();
                     break;
 
                 //Case 'D' låter användaren hämta alla anställda från databas
                 case 'D':
-                    System.out.println("\n----------Retrieve employees details-------------\n");
+                    S.o("\n----------Retrieve employees details-------------\n");
                     employees.retrieveEmployeesInformation();
                 break;
 
                 //Case 'E' låter användare lämna stänga programmet
                 case 'E':
-                    System.out.println("\n" +"Thank you!");
+                    S.o("\n" +"Thank you!");
                 break;
 
                 //Default visar när användare skriver in fel val (case)
                 default:
-                    System.out.println("Error : Choice " + option + " Does not exist.");
-                    System.out.println("Please enter A,B,C,D or E");
+                    S.o("Error : Choice " + option + " Does not exist.");
+                    S.o("Please enter A,B,C,D or E");
             }
         }while (option !='E');
-        System.out.println("\nDatabase connection terminated...");
+        S.o("\nDatabase connection terminated...");
     }
 }
 
