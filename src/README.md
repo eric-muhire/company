@@ -1,6 +1,6 @@
 # EmployeeApplication
-This is a school project for learning mysql,user will be able to add,update, 
-retrieve and delete information in MySQL database through javaApplication.
+This is a school project for learning mysql, user will be able to add, update, 
+ retrieve and delete information in MySQL database through javaApplication.
 
 ### Technical information
 
