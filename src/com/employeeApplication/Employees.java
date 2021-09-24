@@ -136,7 +136,7 @@ public class Employees {
                 S.o("\n-------------Information has been deleted-------------\n");
                 cn.close();
             } catch (SQLException e) {
-                System.out.println(e);
+                S.o(e);
             }
         }
         //Metoden för att hämta information om anställda.
